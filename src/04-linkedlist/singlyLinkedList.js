@@ -66,3 +66,4 @@ testLinkedList.insert(testNode3, "num3.5");
 testLinkedList.display();
 // console.log(testLinkedList.findByValue("num4"));
 // console.log(testLinkedList.findByValue("num3"));
+export default LinkedList;

@@ -1,4 +1,4 @@
-import ArrayStack from './arrayStack.js';
+import ArrayStack from './arrayStack.js.js';
 class Browser {
   constructor() {
     this.curPage = '';
