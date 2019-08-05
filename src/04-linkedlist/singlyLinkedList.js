@@ -25,10 +25,12 @@ class LinkedList {
     curNode.next = new Node(item);
   }
   // 在指定节点的后面插入新节点
-  insert(item, newItem) {
+  insert(newItem, item) {
+    const itemNode = this.findByValue(item);
+    if (!itemNode) return;
     const newElement = new Node(newItem);
-    newElement.next = item.next;
-    item.next = newElement;
+    newElement.next = itemNode.next;
+    itemNode.next = newElement;
   }
   findPrev(item) {
     let curNode = this.head;
@@ -40,30 +42,32 @@ class LinkedList {
   }
   remove(item) {
     const preNode = this.findPrev(item);
+    if (!preNode) return;
     preNode.next = item.next;
   }
   display() {
     let curNode = this.head.next;
     let ret = "";
     while (curNode) {
-      ret += "," + curNode.element;
+      ret += curNode.element + "->";
       curNode = curNode.next;
     }
-    console.log("ret:" + ret);
+    console.log(ret);
+    return ret;
   }
 }
 
-const testLinkedList = new LinkedList();
-testLinkedList.append("num1");
-testLinkedList.append("num2");
-testLinkedList.append("num3");
-testLinkedList.append("num4");
-testLinkedList.append("num5");
-
-const testNode3 = testLinkedList.head.next.next.next;
+// const testLinkedList = new LinkedList();
+// testLinkedList.append("num1");
+// testLinkedList.append("num2");
+// testLinkedList.append("num3");
+// testLinkedList.append("num4");
+// testLinkedList.append("num5");
+// const testNode3 = testLinkedList.head.next.next.next;
 // testLinkedList.remove(testNode3);
-testLinkedList.insert(testNode3, "num3.5");
-testLinkedList.display();
+// testLinkedList.insert(testNode3, "num3.5");
+// testLinkedList.display();
 // console.log(testLinkedList.findByValue("num4"));
 // console.log(testLinkedList.findByValue("num3"));
+
 export default LinkedList;
